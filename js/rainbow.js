@@ -1,6 +1,9 @@
 const paper = document.getElementById("rainbow");
 const pen = paper.getContext("2d");
 
+const soundToggleOff = document.getElementById("sound-toggle-off");
+const soundToggleOn = document.getElementById("sound-toggle-on");
+
 const settings = {
     start: Date.now(),
     duration: 600,              // In seconds
@@ -111,6 +114,13 @@ function run() {
 
 paper.onclick = () => {
     settings["sound"] = settings["sound"] ^ 1;
+    if (settings["sound"]) {
+        soundToggleOff.style.opacity = "0";
+        soundToggleOn.style.opacity = "1";
+    } else {
+        soundToggleOff.style.opacity = "1";
+        soundToggleOn.style.opacity = "0";
+    }
 };
 
 init();
